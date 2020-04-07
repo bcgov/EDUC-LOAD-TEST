@@ -1,0 +1,98 @@
+{
+  "name": "load-tester",
+  "version": "0.0.1",
+  "description": "Load testing for PEN Registry APIs",
+  "scripts": {
+    "loadTest": "node load-test.js"
+  },
+  "dependencies": {
+    "axios": "0.19.0",
+    "config": "^3.2.4",
+    "dotenv": "^8.0.0",
+    "nconf": "^0.10.0",
+    "path": "0.12.7"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "commonjs": true,
+      "es6": true,
+      "jest": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly",
+      "_": false
+    },
+    "parserOptions": {
+      "ecmaVersion": 9
+    },
+    "rules": {
+      "eol-last": [
+        "error",
+        "always"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "jest": {
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "testMatch": [
+      "**/tests/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    "testURL": "http://localhost",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "jest-junit": {
+    "outputDirectory": "./tests/unit/reports/",
+    "outputName": "./junit.xml",
+    "usePathForSuitName": true
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "test-report.xml",
+    "indent": 2
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcgov/EDUC-LOAD-TEST.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bcgov/EDUC-LOAD-TEST/issues"
+  }
+}
