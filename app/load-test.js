@@ -29,8 +29,3 @@ rl.question('Input a JWT for the DigitalID API:  ', async (answer) => {
   
 //   rl.close();
 // });
-
-// grant_type: "client_credentials"
-// scope: ""
-// client_id: "soam-api-service"
-// client_secret: "161fdf33-d318-400a-8ee7-5cf6b5962fd0"
