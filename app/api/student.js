@@ -15,7 +15,6 @@ function randGender(){
 }
 
 function postStudent(token, url) {
-  return new Promise((resolve, reject) => {
     const rand = randGender();
     const date = faker.date.between('1940-01-01','2017-12-31');
     let strDate = date.toISOString();
@@ -40,14 +39,12 @@ function postStudent(token, url) {
         Authorization: `Bearer ${token}`,
       }
     };
-    axios.post(url, body, header).then(() => {
-      resolve();
+    axios.post(url, body, header).then((response) => {
+      console.log(response.data);
     }).catch(function(err){
-      // console.log(err);
-      reject(err);
+      console.log(err);
     });
-  });
-};
+}
   
 const student = {
     postStudent

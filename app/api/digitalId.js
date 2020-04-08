@@ -11,7 +11,6 @@ function makeid(length) {
 }
 
 function postDigitalId(token, url) {
-  return new Promise((resolve, reject) => {
     const identityValue = makeid(32);
     const header = {
       headers: {
@@ -26,12 +25,11 @@ function postDigitalId(token, url) {
           createUser: "LOAD-TEST",
           updateUser: "LOAD-TEST"
     };
-    axios.post(url, data, header).then(() =>{
-      resolve();
+    axios.post(url, data, header).then((response) =>{
+        console.log(response.data);
     }).catch(function(err){
-      reject(err);
+        console.log(err)
     });
-  });
 }
 
 const digitalId = {
