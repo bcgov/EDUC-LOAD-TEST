@@ -43,8 +43,8 @@ function postStudent(token, url) {
     axios.post(url, body, header).then(() => {
       resolve();
     }).catch(function(err){
-      console.log(err);
-      reject();
+      // console.log(err);
+      reject(err);
     });
   });
 };
