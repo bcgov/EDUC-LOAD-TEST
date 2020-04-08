@@ -17,35 +17,33 @@ function randGender(){
 
 function postStudent(token, url) {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const rand = randGender();
-      const date = faker.date.between('1940-01-01','2017-12-31');
-      let strDate = date.toISOString();
-      strDate = strDate.slice(0, -14)
-      const body = {
-        pen: String(faker.random.number({min: 100000000,max: 999999999})),
-        legalFirstName: faker.name.firstName(),
-        legalMiddleNames: faker.name.firstName(),
-        legalLastName: faker.name.lastName(),
-        dob: strDate,
-        sexCode: rand.sex,
-        genderCode: rand.gender,
-        usualFirstName: faker.name.firstName(),
-        usualMiddleNames: faker.name.firstName(),
-        usualLastName: faker.name.lastName(),
-        email: faker.internet.email(),
-        createUser: 'LOAD-TEST',
-        updateUser: 'LOAD-TEST'
-      };
-      const header = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      };
-      axios.post(url, body, header).then(() => {
-        resolve();
-      });
-    }, 100);
+    const rand = randGender();
+    const date = faker.date.between('1940-01-01','2017-12-31');
+    let strDate = date.toISOString();
+    strDate = strDate.slice(0, -14)
+    const body = {
+      pen: String(faker.random.number({min: 100000000,max: 999999999})),
+      legalFirstName: faker.name.firstName(),
+      legalMiddleNames: faker.name.firstName(),
+      legalLastName: faker.name.lastName(),
+      dob: strDate,
+      sexCode: rand.sex,
+      genderCode: rand.gender,
+      usualFirstName: faker.name.firstName(),
+      usualMiddleNames: faker.name.firstName(),
+      usualLastName: faker.name.lastName(),
+      email: faker.internet.email(),
+      createUser: 'LOAD-TEST',
+      updateUser: 'LOAD-TEST'
+    };
+    const header = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    };
+    axios.post(url, body, header).then(() => {
+      resolve();
+    });
   });
 };
   
