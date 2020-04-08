@@ -13,11 +13,11 @@ const testRuns = 5;
 async function loadTest(){
   const jwt = await util.getToken(config.get('digitalId:clientSecret'), config.get('digitalId:clientId'));
 
-  for(var a = 0;a < testRuns; a++){
+  for(let a = 0;a < testRuns; a++){
     digitalId.postDigitalId(jwt, config.get('digitalId:apiEndpoint'));
   }
 
-  for(var a = 0;a < testRuns; a++){
+  for(let a = 0;a < testRuns; a++){
     student.postStudent(jwt, config.get('student:apiEndpoint'));
   }
 }

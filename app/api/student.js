@@ -8,11 +8,10 @@ function randGender(){
   const sexes = ['M','F','I','U'];
   const randG = genders[Math.floor(Math.random() * genders.length)];
   const randS = sexes[Math.floor(Math.random() * sexes.length)];
-  const rand = {
+  return {
     gender: randG,
     sex: randS
   };
-  return rand;
 }
 
 function postStudent(token, url) {
@@ -20,7 +19,7 @@ function postStudent(token, url) {
     const rand = randGender();
     const date = faker.date.between('1940-01-01','2017-12-31');
     let strDate = date.toISOString();
-    strDate = strDate.slice(0, -14)
+    strDate = strDate.slice(0, -14);
     const body = {
       pen: String(faker.random.number({min: 100000000,max: 999999999})),
       legalFirstName: faker.name.firstName(),

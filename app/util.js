@@ -74,6 +74,6 @@ async function getToken(secret, id){
 const utils= {
     getToken,
     getOidcDiscovery
-}
+};
 
 module.exports = utils;
