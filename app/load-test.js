@@ -8,7 +8,7 @@ const http = require('http');
 const express = require('express');
 
 const app = express();
-const testRuns = 2;
+const testRuns = 5000;
 
 async function loadTest(){
   const jwt = await util.getToken(config.get('digitalId:clientSecret'), config.get('digitalId:clientId'));

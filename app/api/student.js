@@ -1,6 +1,6 @@
 const faker = require('faker');
 const axios = require('axios');
-
+let error=0;
 faker.seed(0);
 
 function randGender(){
@@ -40,9 +40,9 @@ function postStudent(token, url) {
       }
     };
     axios.post(url, body, header).then((response) => {
-      console.log(response.data);
+        console.log(`success`);
     }).catch(function(err){
-      console.log(err);
+        console.log(`err number${error++}`);
     });
 }
   

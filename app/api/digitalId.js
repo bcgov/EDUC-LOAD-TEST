@@ -1,5 +1,5 @@
 const axios = require('axios');
-
+let error=0;
 function makeid(length) {
   let result           = '';
   const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -26,9 +26,9 @@ function postDigitalId(token, url) {
           updateUser: "LOAD-TEST"
     };
     axios.post(url, data, header).then((response) =>{
-        console.log(response.data);
+        console.log(`success`);
     }).catch(function(err){
-        console.log(err)
+        console.log(`err number${error++}`);
     });
 }
 
