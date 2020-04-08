@@ -1,31 +1,32 @@
 'use strict'
 
-const readline = require('readline');
 const digitalId = require('./api/digitalId');
 const student = require('./api/student');
 const config = require('./config');
+const util = require('./util');
+const http = require('http');
+const express = require('express');
 
+const app = express();
+const testRuns = 1000;
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-  
-rl.question('Input a JWT for the DigitalID API:  ', async (answer) => {
-  
-  for(var a = 0;a < 10; a++){
-    var res = await digitalId.postDigitalId(answer, config.get('digitalId:apiEndpoint'));
-    console.log(res);
+async function loadTest(){
+  const jwt = await util.getToken(config.get('digitalId:clientSecret'), config.get('digitalId:clientId'));
+
+  for(let a = 0;a < testRuns; a++){
+    digitalId.postDigitalId(jwt, config.get('digitalId:apiEndpoint')).catch((err) => {
+      console.log(err);
+    });
   }
-  
-  rl.close();
-});
 
-// rl.question('Input a JWT for the Student API:   ', (answer) => {
-  
-//   for(var a = 0;a < 10; a++){
-//     student.postDigitalId(answer, config.get('digitalId:apiEndpoint'));
-//   }
-  
-//   rl.close();
-// });
+  for(let a = 0;a < testRuns; a++){
+    student.postStudent(jwt, config.get('student:apiEndpoint')).catch((err) => {
+      console.log(err);
+    });
+  }
+}
+
+const server = http.createServer(app);
+server.listen(8080);
+
+loadTest();
