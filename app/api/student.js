@@ -1,24 +1,57 @@
+const faker = require('faker');
+const axios = require('axios');
 
-  
-async function postStudent(token, url) {
-    try{
-    const getDataConfig = {
+faker.seed(0);
+
+function randGender(){
+  const genders = ['M','F','X','U'];
+  const sexes = ['M','F','I','U'];
+  const randG = genders[Math.floor(Math.random() * genders.length)];
+  const randS = sexes[Math.floor(Math.random() * sexes.length)];
+  const rand = {
+    gender: randG,
+    sex: randS
+  };
+  return rand;
+}
+
+function postStudent(token, url) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const rand = randGender();
+      const date = faker.date.between('1940-01-01','2017-12-31');
+      let strDate = date.toISOString();
+      strDate = strDate.slice(0, -14)
+      const body = {
+        pen: String(faker.random.number({min: 100000000,max: 999999999})),
+        legalFirstName: faker.name.firstName(),
+        legalMiddleNames: faker.name.firstName(),
+        legalLastName: faker.name.lastName(),
+        dob: strDate,
+        sexCode: rand.sex,
+        genderCode: rand.gender,
+        usualFirstName: faker.name.firstName(),
+        usualMiddleNames: faker.name.firstName(),
+        usualLastName: faker.name.lastName(),
+        email: faker.internet.email(),
+        createUser: 'LOAD-TEST',
+        updateUser: 'LOAD-TEST'
+      };
+      const header = {
         headers: {
-        Authorization: `Bearer ${token}`,
-        },
-        data: {
+          Authorization: `Bearer ${token}`,
         }
-    };
-    const response = await axios.post(url, getDataConfig);
-    return response;
-    } catch(e){
-    console.log('Error posting to DigitalID API');
-    }
+      };
+      axios.post(url, body, header).then(() => {
+        resolve();
+      });
+    }, 100);
+  });
 };
   
-const digitalId = {
+const student = {
     postStudent
 };
   
-module.exports = digitalId;
+module.exports = student;
   

@@ -10,9 +10,10 @@ function makeid(length) {
   return result;
 }
 
-async function postDigitalId(token, url) {
-    const identityValue = makeid(32);
-    try{
+function postDigitalId(token, url) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() =>{
+      const identityValue = makeid(32);
       const header = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -22,13 +23,15 @@ async function postDigitalId(token, url) {
             identityTypeCode: "BCSC",
             identityValue: identityValue,
             lastAccessChannelCode: "OSPR",
-            lastAccessDate: "2020-03-04T10:37:00"
+            lastAccessDate: "2020-03-04T10:37:00",
+            createUser: "LOAD-TEST",
+            updateUser: "LOAD-TEST"
       };
-      const response = await axios.post(url, data,header);
-      return response;
-    } catch(e){
-      console.log('Error posting to DigitalID API - ' + e);
-    }
+      axios.post(url, data, header).then(() =>{
+        resolve();
+      });
+    }, 100);
+  });
 };
 
 const digitalId = {
