@@ -28,6 +28,9 @@ function postDigitalId(token, url) {
     };
     axios.post(url, data, header).then(() =>{
       resolve();
+    }).catch(function(err){
+      console.log(err);
+      reject();
     });
   });
 };
