@@ -187,7 +187,7 @@ async function createStudent() {
           url: url,
           concurrency: concurrency,
           maxRequests: maxRequests,
-          //statusCallback: statusCallback,
+          statusCallback: statusCallback,
           contentType: 'application/json',
           headers: {
             Authorization: `Bearer ${result.access_token}`
