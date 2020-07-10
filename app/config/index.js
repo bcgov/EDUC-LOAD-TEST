@@ -13,8 +13,8 @@ nconf.defaults({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   studentGenerator: {
-    maxRecords: process.env.maxRecords, // must be a number
-    concurrency: process.env.concurrency // must be a number
+    maxRecords: process.env.MAX_RECORDS_GENERATE_STUDENT, // must be a number
+    concurrency: process.env.CONCURRENCY_GENERATE_STUDENT // must be a number
   }
 });
 module.exports = nconf;
