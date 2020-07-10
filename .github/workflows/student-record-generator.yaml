@@ -27,11 +27,13 @@ jobs:
       - run: npm install
 
       - run: npm run student-record-generator
-        #env:
-         # TOKEN_ENVIRONMENT: ${{ secrets.TEST_ENVIRONMENT }}
-          #TOKEN_NAMESPACE: ${{ secrets.TOKEN_NAMESPACE }}
-          #TOKEN_CLIENT_ID: ${{ secrets.TOKEN_CLIENT_ID }}
-          #TOKEN_CLIENT_SECRET_TEST: ${{ secrets.TOKEN_CLIENT_SECRET_TEST }}
+        env:
+          TOKEN_URL: ${{ secrets.TOKEN_URL }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          STUDENT_API_URL: ${{ secrets.STUDENT_API_URL }}
+          MAX_RECORDS_GENERATE_STUDENT: ${{ secrets.MAX_RECORDS_GENERATE_STUDENT }}
+          CONCURRENCY_GENERATE_STUDENT: ${{ secrets.CONCURRENCY_GENERATE_STUDENT }}
 
       # Warning: Make sure not to upload the screenshots for test cases involved with PI data
       #- name: Rocket.Chat Notification
