@@ -3,17 +3,15 @@
   "version": "0.0.1",
   "description": "Load testing for PEN Registry APIs",
   "scripts": {
-    "loadTest": "node load-test.js"
+    "student-record-generator": "node student-record-generator.js"
   },
   "dependencies": {
     "axios": "0.19.0",
-    "config": "^3.2.4",
-    "dotenv": "^8.0.0",
+    "faker": "4.1.0",
+    "loadtest": "^5.0.1",
     "nconf": "^0.10.0",
     "path": "0.12.7",
-    "qs": "6.9.3",
-    "faker": "4.1.0",
-    "express": "4.17.1"
+    "qs": "6.9.3"
   },
   "eslintConfig": {
     "root": true,
