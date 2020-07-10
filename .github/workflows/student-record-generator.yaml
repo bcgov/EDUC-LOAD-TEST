@@ -1,0 +1,45 @@
+name: Generate Student Records.
+on:
+  workflow_dispatch:
+
+jobs:
+  generate_student_records:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache Node Modules
+        uses: actions/cache@v1
+        env:
+          cahce-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm install
+
+      - run: npm run student-record-generator
+        #env:
+         # TOKEN_ENVIRONMENT: ${{ secrets.TEST_ENVIRONMENT }}
+          #TOKEN_NAMESPACE: ${{ secrets.TOKEN_NAMESPACE }}
+          #TOKEN_CLIENT_ID: ${{ secrets.TOKEN_CLIENT_ID }}
+          #TOKEN_CLIENT_SECRET_TEST: ${{ secrets.TOKEN_CLIENT_SECRET_TEST }}
+
+      # Warning: Make sure not to upload the screenshots for test cases involved with PI data
+      #- name: Rocket.Chat Notification
+       # uses: RocketChat/Rocket.Chat.GitHub.Action.Notification@1.1.1
+        #if: always()
+        #with:
+         # type: ${{ job.status }}
+          #job_name: "Admin_TEST Smoke Test result --->"
+          #icon_emoji: ":bell:"
+          #channel: "pen-automation-notifications"
+          #url: ${{ secrets.ROCKETCHAT_WEBHOOK }}
