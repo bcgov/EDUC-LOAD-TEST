@@ -142,11 +142,16 @@ async function getLatestPenNumberFromDB(token) {
       'Authorization': `Bearer ${token}`
     }
   };
-  const studentResult = await axios.default.get(url, params);
-  if (studentResult.data.content && studentResult.data.content[0]) {
-    return studentResult.data.content[0].pen;
+  try {
+    const studentResult = await axios.default.get(url, params);
+    if (studentResult.data.content && studentResult.data.content[0]) {
+      return studentResult.data.content[0].pen;
+    }
+    return 20000000;
+  }catch (e) {
+    console.error(e);
+    return null;
   }
-  return 20000000;
 }
 
 async function createStudent() {
