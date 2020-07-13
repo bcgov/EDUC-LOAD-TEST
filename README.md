@@ -23,7 +23,7 @@ Load testing for PEN Registry APIs
 
 ### From Git Hub Actions.
 1. populate these secrets in the git hub repo and then go to
-`https://github.com/bcgov/EDUC-LOAD-TEST/actions?query=workflow%3A%22Generate+Student+Records.%22` and click on Run workflow button.
+ [a link](https://github.com/bcgov/EDUC-LOAD-TEST/actions?query=workflow%3A%22Generate+Student+Records.%22) and click on Run workflow button.
 ```yaml
   TOKEN_URL: ${{ secrets.TOKEN_URL }}
   CLIENT_ID: ${{ secrets.CLIENT_ID }}
