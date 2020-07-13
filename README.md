@@ -1,9 +1,9 @@
 # EDUC-LOAD-TEST
 Load testing for PEN Registry APIs
 
-#Generating Student TEST DATA
+## Generating Student TEST DATA
 
-###From the Local Machine.
+### From the Local Machine.
 1. check out the source code, switch to `app` folder.
 2. create the local.json file in `app/config` folder and populate these values based on the environment.
 3. Make sure `NODE_ENV` is set to `local`
@@ -21,7 +21,7 @@ Load testing for PEN Registry APIs
 } 
 ```
 
-###From Git Hub Actions.
+### From Git Hub Actions.
 1. populate these secrets in the git hub repo and then go to
 `https://github.com/bcgov/EDUC-LOAD-TEST/actions?query=workflow%3A%22Generate+Student+Records.%22` and click on Run workflow button.
 ```yaml
