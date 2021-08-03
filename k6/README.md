@@ -28,6 +28,9 @@ oc create -n <NAMESPACE> configmap k6-config --from-file=../../src/config/config
 ```
 oc -n <NAMESPACE> process -f bc.yaml | oc -n <NAMESPACE> apply -f -
 ```
+* Build the build config to create an image
+ `oc start-build <buildconfig_name>` here buildconfig_name is `educ-k6-api-perfomance`
+
 * Creating the K6 job will automatically run the load test on creation, and will terminate the container upon completion
 ```
 oc -n <NAMESPACE> process -f dc.yaml -p IMAGE_NAMESPACE=<NAMESPACE> | oc -n <NAMESPACE> apply -f -
