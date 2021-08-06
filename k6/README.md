@@ -26,7 +26,7 @@ oc create -n <NAMESPACE> configmap k6-config --from-file=../../src/config/config
 ```
 * Build K6 job
 ```
-oc -n <NAMESPACE> process -f bc.yaml | oc -n <NAMESPACE> apply -f -
+oc -n <NAMESPACE> process -f https://raw.githubusercontent.com/bcgov/EDUC-LOAD-TEST/master/k6/openshift/k6/bc.yaml | oc -n <NAMESPACE> apply -f -
 ```
 * Build the build config to create an image
  `oc start-build <buildconfig_name>` here buildconfig_name is `educ-k6-api-perfomance`
