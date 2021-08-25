@@ -31,6 +31,8 @@ objects:
         type: Git
       strategy:
         dockerStrategy:
+          pullSecret:
+            name: artifactory-creds
           dockerfilePath: openshift/k6/Dockerfile
         type: Docker
     metadata:
