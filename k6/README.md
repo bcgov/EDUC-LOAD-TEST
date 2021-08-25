@@ -33,7 +33,7 @@ oc -n <NAMESPACE> process -f https://raw.githubusercontent.com/bcgov/EDUC-LOAD-T
 
 * Creating the K6 job will automatically run the load test on creation, and will terminate the container upon completion
 ```
-oc -n <NAMESPACE> process -f dc.yaml -p IMAGE_NAMESPACE=<NAMESPACE> | oc -n <NAMESPACE> apply -f -
+oc -n <NAMESPACE> process -f https://raw.githubusercontent.com/bcgov/EDUC-LOAD-TEST/master/k6/openshift/k6/dc.yaml -p IMAGE_NAMESPACE=<NAMESPACE> | oc -n <NAMESPACE> apply -f -
 ```
 * Once tests are complete, clean up K6 job artifacts
 ```
