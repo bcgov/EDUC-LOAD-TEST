@@ -13,7 +13,7 @@
     "nconf": "^0.10.0",
     "path": "0.12.7",
     "nats": "^2.1.0",
-    "qs": "6.9.3"
+    "qs": "6.9.7"
   },
   "eslintConfig": {
     "root": true,
